@@ -10,5 +10,5 @@ sudo apt-get install sublime-text
 ```
 install configs:
 ```
-mv ~/.config/sublime-text-2 ~/.config/sublime-text-2_old && git clone https://github.com/Jedius/sublime-jed.git ~/.config/sublime-text-2
+mv ~/.config/sublime-text-2 ~/.config/sublime-text-2_old; git clone https://github.com/Jedius/sublime-jed.git ~/.config/sublime-text-2
 ```
