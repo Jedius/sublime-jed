@@ -1,0 +1,12 @@
+[
+	{ "keys": ["ctrl+alt+q"], "command": "exit" },
+	{ "keys": ["ctrl+alt+e"], "command": "slurp_find_string" },
+	{ "keys": ["ctrl+e"], "command": "next_view" },
+	{ "keys": ["ctrl+q"], "command": "prev_view" },
+
+	// { "keys": ["alt+shift+up"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true} },
+	// { "keys": ["alt+shift+down"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true} },
+	// { "keys": ["shift+up"], "command": "select_lines", "args": {"forward": false} },
+	// { "keys": ["shift+down"], "command": "select_lines", "args": {"forward": true} }
+	{}
+]
