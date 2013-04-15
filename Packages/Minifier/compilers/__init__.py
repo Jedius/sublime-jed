@@ -1,0 +1,4 @@
+from googleclosurecall import GoogleClosureCall
+from uglifycall import UglifyCall
+from reducisauruscall import ReducisaurusCall
+from cssminifiercall import CssminifierCall
