@@ -4,11 +4,10 @@
 	"ignored_packages":
 	[
 		"2pdf",
+		"SublimeOnSaveBuild",
 		"AndyJS2",
-		"Vintage",
 		"Sublime File Navigator",
 		"Build on Save",
-		"SublimeOnSaveBuild"
-	],
-	"shift_tab_unindent": true
+		"Vintage"
+	]
 }

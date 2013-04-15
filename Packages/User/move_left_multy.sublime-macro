@@ -1,0 +1,18 @@
+[
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}},
+	{"command": "move", "args": {"by": "characters", "forward": false}}
+]
