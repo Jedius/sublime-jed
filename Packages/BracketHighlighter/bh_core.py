@@ -810,9 +810,13 @@ class BhCore(object):
 
         if view == None:
             return
+
+        view.settings().set("BracketHighlighterBusy", True)
+
         if not GLOBAL_ENABLE:
             for region_key in view.settings().get("bh_regions", []):
                 view.erase_regions(region_key)
+            view.settings().set("BracketHighlighterBusy", False)
             return
 
         if self.keycommand:
@@ -834,11 +838,13 @@ class BhCore(object):
 
             # Nothing to search for
             if not self.enabled:
+                view.settings().set("BracketHighlighterBusy", False)
                 return
 
             # Abort if selections are beyond the threshold
             if self.use_selection_threshold and num_sels >= self.selection_threshold:
                 self.highlight(view)
+                view.settings().set("BracketHighlighterBusy", False)
                 return
 
             multi_select_count = 0
@@ -859,6 +865,7 @@ class BhCore(object):
         self.highlight(view)
         if self.count_lines:
             sublime.status_message('In Block: Lines ' + str(self.lines) + ', Chars ' + str(self.chars))
+        view.settings().set("BracketHighlighterBusy", False)
 
     def save_incomplete_regions(self, left, right, regions):
         """
@@ -926,7 +933,9 @@ class BhCore(object):
 
         if left is not None and right is not None:
             bracket = self.brackets[left.type]
-            left, right, regions = self.run_plugin(bracket.name, left, right, regions)
+            left, right, regions, nobracket = self.run_plugin(bracket.name, left, right, regions)
+            if nobracket:
+                return True
 
         # Matched brackets
         if left is not None and right is not None and bracket is not None:
@@ -946,7 +955,7 @@ class BhCore(object):
         regions = [sublime.Region(sel.a, sel.b)]
 
         if left is not None and right is not None:
-            left, right, regions = self.run_plugin(bracket.name, left, right, regions)
+            left, right, regions, _ = self.run_plugin(bracket.name, left, right, regions)
             if left is None and right is None:
                 self.store_sel(regions)
                 return True
@@ -971,7 +980,7 @@ class BhCore(object):
 
         if left is not None and right is not None:
             bracket = self.brackets[left.type]
-            left, right, regions = self.run_plugin(bracket.name, left, right, regions)
+            left, right, regions, _ = self.run_plugin(bracket.name, left, right, regions)
 
         # Matched brackets
         if left is not None and right is not None and bracket is not None:
@@ -1113,16 +1122,17 @@ class BhCore(object):
 
         lbracket = BracketRegion(left.begin, left.end)
         rbracket = BracketRegion(right.begin, right.end)
+        nobracket = False
 
         if (
             ("__all__" in self.transform or name in self.transform) and
             self.plugin != None and
             self.plugin.is_enabled()
         ):
-            lbracket, rbracket, regions = self.plugin.run_command(self.view, name, lbracket, rbracket, regions)
+            lbracket, rbracket, regions, nobracket = self.plugin.run_command(self.view, name, lbracket, rbracket, regions)
             left = left.move(lbracket.begin, lbracket.end) if lbracket is not None else None
             right = right.move(rbracket.begin, rbracket.end) if rbracket is not None else None
-        return left, right, regions
+        return left, right, regions, nobracket
 
     def match_scope_brackets(self, bfr, sel):
         """

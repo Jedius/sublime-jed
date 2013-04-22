@@ -1,6 +1,6 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/jed.tmTheme",
-	"font_size": 13,
+	"font_size": 14,
 	"ignored_packages":
 	[
 		"2pdf",
@@ -8,6 +8,7 @@
 		"Vintage",
 		"Sublime File Navigator",
 		"Build on Save",
-		"SublimeOnSaveBuild"
+		"SublimeOnSaveBuild",
+		"SublimeLinter"
 	]
 }
